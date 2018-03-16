@@ -13,11 +13,11 @@ public class TextController : MonoBehaviour
 	void Start ()
 	{
 		var cell = new Cell (); //new State (States.cell, KeyCode.Space, cellText);
-		var sheet0 = new State (States.sheets_0, KeyCode.S, "Sheet 0");
+		var sheet0 = new Sheet0 ();
 		sheet0.AddState (cell);
-		var lock0 = new State (States.lock_0, KeyCode.L, "Lock 0");
+		var lock0 = new Lock0 ();
 		lock0.AddState (cell);
-		var mirror = new State (States.mirror, KeyCode.M, "Mirror");
+		var mirror = new Mirror ();
 		mirror.AddState (cell);
 		cell.AddState (sheet0);
 		cell.AddState (lock0);
@@ -43,6 +43,39 @@ enum States
 	cell_mirror,
 	sheets_1}
 ;
+
+class Mirror : State
+{
+	public Mirror ()
+	{
+		this.stateName = States.mirror; 
+		this.key = KeyCode.M; 
+		this.text = "Mirror";
+
+	}
+}
+
+class Lock0 : State
+{
+	public Lock0()
+	{
+		this.stateName = States.lock_0; 
+		this.key = KeyCode.L; 
+		this.text = "Lock_0";
+
+	}
+}
+
+class Sheet0 : State
+{
+	public Sheet0 ()
+	{
+		this.stateName = States.sheets_0; 
+		this.key = KeyCode.S; 
+		this.text = "Sheet0";
+
+	}
+}
 
 
 class Cell : State
